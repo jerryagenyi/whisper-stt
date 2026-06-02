@@ -1,0 +1,24 @@
+name: whisper-stt
+
+services:
+  whisper-stt:
+    image: fedirz/faster-whisper-server:latest-cpu
+    container_name: whisper-stt
+    environment:
+      - WHISPER__MODEL=small
+      - WHISPER__DEVICE=cpu
+      - WHISPER__COMPUTE_TYPE=int8
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - whisper-models:/root/.cache/huggingface
+    networks:
+      - shared-services
+    restart: unless-stopped
+
+volumes:
+  whisper-models:
+
+networks:
+  shared-services:
+    external: true
