@@ -21,4 +21,5 @@ volumes:
 
 networks:
   shared-services:
-    external: true
+    name: shared-services
+    driver: bridge
