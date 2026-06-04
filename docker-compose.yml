@@ -14,6 +14,7 @@ services:
       - whisper-models:/root/.cache/huggingface
     networks:
       - shared-services
+      - vexa
     restart: unless-stopped
 
 volumes:
@@ -23,3 +24,6 @@ networks:
   shared-services:
     name: shared-services
     driver: bridge
+  vexa:
+    external: true
+    name: vexa
